@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+
+    <color name="bgColor">#FFFFFF</color>
+    <color name="fontColor">#000000</color>
+    <color name="IconColor">#000000</color>
+
+    <color name="defaultColor">#6A72FF</color>
+</resources>

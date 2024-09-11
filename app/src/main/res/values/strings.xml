@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NewMetro</string>
+
+    <!--menu_String-->
+    <string name="hand_mode">모드 변경</string>
+
+    <string name="menu_theme">야간 모드</string>
+
+    <string name="fontSize">폰트 변경</string>
+
+    <string name="lostAndFind">유실물</string>
+    
+    <string name="fontSizeSmall">작은 사이즈</string>
+    <string name="fontSizeNormal">보통 사이즈</string>
+    <string name="fontSizeBig">큰 사이즈</string>
+</resources>

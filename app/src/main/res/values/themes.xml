@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NewMetro" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!--        String name-->
+        <item name="android:textColor">@color/fontColor</item>
+        <item name="android:backgroundTint">@color/bgColor</item>
+    </style>
+
+    <style name="Theme.NewMetro" parent="Base.Theme.NewMetro" />
+</resources>
