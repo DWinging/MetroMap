@@ -9,4 +9,5 @@
     </style>
 
     <style name="Theme.NewMetro" parent="Base.Theme.NewMetro" />
+
 </resources>

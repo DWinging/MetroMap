@@ -16,12 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.newmetro.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Metro_map_fragment extends Fragment {
-
-    //ScrollView
-    ScrollView scrollView;
-    HorizontalScrollView horizontalScrollView;
 
     //ImageView
     ImageView metro_map;
@@ -29,7 +26,7 @@ public class Metro_map_fragment extends Fragment {
     Bitmap resized;
 
     //Button
-    static Button btn;
+    FloatingActionButton btn;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,7 +40,7 @@ public class Metro_map_fragment extends Fragment {
 //        metro_map = (ImageView) view.findViewById(R.id.metro_map);
 //        metro_map.setImageBitmap(resized);
 
-        btn = (Button) view.findViewById(R.id.nav_button);
+        btn = (FloatingActionButton) view.findViewById(R.id.nav_button);
 
         return view;
     }

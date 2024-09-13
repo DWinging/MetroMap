@@ -7,15 +7,15 @@
         android:id="@+id/menu_icon"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:backgroundTint="@color/IconColor"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        style="@style/menu"/>
 
     <TextView
         android:id="@+id/menu_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/fontColor"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        style="@style/menu"/>
 
 </LinearLayout>

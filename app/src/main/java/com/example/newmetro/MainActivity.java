@@ -1,5 +1,6 @@
 package com.example.newmetro;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     public void setSettingMenu(){
         settingMenuList = (ExpandableListView) findViewById(R.id.setting_menu);
 
@@ -146,8 +149,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 String groupName = settingMenus.get(groupPosition).groupName;
 
-                if(groupName.equals(getResources().getString(R.string.menu_theme))){
+                if(groupName.equals(getResources().getString(R.string.menu_theme))) {
                     drawerLayout.closeDrawer(GravityCompat.START);
+                    if (getResources().getString(R.string.menu_theme).equals("야간 모드")){
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
+                    else{
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    }
+
                     return true;
                 }
 
