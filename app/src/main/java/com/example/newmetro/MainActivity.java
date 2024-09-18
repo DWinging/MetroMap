@@ -2,6 +2,7 @@ package com.example.newmetro;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ import com.example.newmetro.Menu.MainMenuGroup;
 import com.example.newmetro.Menu.SettingMenuAdapter;
 import com.example.newmetro.Menu.SettingMenuGroup;
 import com.example.newmetro.MetroMap.Metro_map_fragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -56,10 +58,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     TextView page_title;
 
+    SharedPreferences preferces;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        preferces = getSharedPreferences("Setting", 0);
+
+        if(preferces.getString("theme", "Day").equals("Day")){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
 
         metro_map_fragment = new Metro_map_fragment();
 
@@ -149,12 +164,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 String groupName = settingMenus.get(groupPosition).groupName;
 
+                SharedPreferences.Editor editor = preferces.edit();
+
                 if(groupName.equals(getResources().getString(R.string.menu_theme))) {
                     drawerLayout.closeDrawer(GravityCompat.START);
                     if (getResources().getString(R.string.menu_theme).equals("야간 모드")){
+                        editor.putString("theme", "Night");
+                        editor.commit();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     }
                     else{
+                        editor.putString("theme", "Day");
+                        editor.commit();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     }
 
@@ -170,18 +191,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
                 drawerLayout.closeDrawer(GravityCompat.START);
+
                 String child = settingMenus.get(groupPosition).child.get(childPosition);
-                Bundle bundle = new Bundle();
+                SharedPreferences.Editor editor = preferces.edit();
 
                 if(settingMenus.get(groupPosition).groupName.equals(getResources().getString(R.string.fontSize))){
-                    return true;
+                    editor.putString("fontSize", child);
+                    editor.commit();
                 }
 
                 if(settingMenus.get(groupPosition).groupName.equals(getResources().getString(R.string.hand_mode))){
-                    return true;
+                    editor.putString("mode", child);
+                    metro_map_fragment.navBtnChange(child);
+                    editor.commit();
                 }
 
-                return false;
+
+                setSettingMenu();
+
+                return true;
             }
         });
     }

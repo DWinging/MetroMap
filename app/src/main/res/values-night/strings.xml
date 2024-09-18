@@ -11,4 +11,7 @@
 
     <string name="lostAndFind">유실물</string>
 
+    <string name="fontSizeSmall">작은 사이즈</string>
+    <string name="fontSizeNormal">보통 사이즈</string>
+    <string name="fontSizeBig">큰 사이즈</string>
 </resources>
